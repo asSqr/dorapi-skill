@@ -1,0 +1,68 @@
+service: dorapi-skill
+variablesResolutionMode: 20210326
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: ap-northeast-1
+  lambdaHashingVersion: 20201221
+
+functions:
+  dorapi:
+    handler: lambda_handler.handler
+    events:
+      - alexaSkill: ${file(./config/env_${self:provider.stage}.json):ALEXA_SKILL_ID}
+
+plugins:
+  - serverless-alexa-skills
+  - serverless-python-requirements
+  - serverless-dotenv-plugin
+
+custom:
+  pythonRequirements:
+    dockerizePip: false
+  alexa:
+    vendorId: ${file(./config/env_${self:provider.stage}.json):AMAZON_VENDOR_ID}
+    clientId: ${file(./config/env_${self:provider.stage}.json):AMAZON_CLIENT_ID}
+    clientSecret: ${file(./config/env_${self:provider.stage}.json):AMAZON_CLIENT_SECRET}
+    localServerPort: 9091
+
+    skills:
+      - id: ${file(./config/env_${self:provider.stage}.json):ALEXA_SKILL_ID}
+        manifest:
+          publishingInformation:
+            locales:
+              ja-JP:
+                name: dorapi
+          apis:
+            custom:
+              endpoint:
+                uri: arn:aws:lambda:ap-northeast-1:${file(./config/env_${self:provider.stage}.json):AWS_ACCOUNT}:function:dorapi-skill-${self:provider.stage}-dorapi
+          manifestVersion: '1.0'
+        models:
+          ja-JP:
+            interactionModel:
+              languageModel:
+                invocationName: ユータス
+                intents:
+                - name: DorapiIntent
+                  samples:
+                      - "ひみつ道具を調べて"
+                      - "ひみつ道具"
+                      - "ドラえもん"
+                      - "ドラ"
+                      - "ドラちゃん"
+                      - "ドラカス"
+                      - "ドラカス畜生"
+                - name: AMAZON.HelpIntent
+                  samples:
+                - name: AMAZON.CancelIntent
+                  samples:
+                - name: AMAZON.StopIntent
+                  samples:
+
+package:
+  exclude:
+    - node_modules/**
+    - skill_env/**
