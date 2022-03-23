@@ -1,6 +1,8 @@
+# coding: utf-8
+
 from ask_sdk_core.skill_builder import SkillBuilder
 
-from .handler import (
+from handler import (
     AllExceptionHandler,
     CancelAndStopIntentHandler,
     DorapiIntentHandler,

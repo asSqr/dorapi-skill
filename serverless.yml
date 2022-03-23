@@ -44,7 +44,7 @@ custom:
           ja-JP:
             interactionModel:
               languageModel:
-                invocationName: ユータス
+                invocationName: ドラえもん
                 intents:
                 - name: DorapiIntent
                   samples:
