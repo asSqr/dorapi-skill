@@ -4,6 +4,11 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 class LaunchRequestHandler(AbstractRequestHandler):
     
@@ -11,7 +16,9 @@ class LaunchRequestHandler(AbstractRequestHandler):
         return is_request_type("LaunchRequest")(handler_input)
     
     def handle(self, handler_input: HandlerInput) -> Response:
-        speech_text = "ようこそ、アレクサスキルキットへ。こんにちは、と言ってみてください。"
+        logger.info('In LaunchRequestHandler')
+        
+        speech_text = "ようこそ、ドラピアイへ。ひみつ道具に関するキーワードを言ってみてください。"
         
         (
             handler_input.response_builder

@@ -4,6 +4,11 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 class CancelAndStopIntentHandler(AbstractRequestHandler):
     
@@ -14,12 +19,15 @@ class CancelAndStopIntentHandler(AbstractRequestHandler):
         )
     
     def handle(self, handler_input: HandlerInput) -> Response:
+        logger.info('CancelAndStopIntentHandler')
+        
         speech_text = "さようなら"
+        cancel_title = "キャンセル"
         
         (
             handler_input.response_builder
             .speak(speech_text)
-            .set_card(SimpleCard("ハローワールド", speech_text))
+            .set_card(SimpleCard(cancel_title, speech_text))
             .set_should_end_session(True)
         )
         
