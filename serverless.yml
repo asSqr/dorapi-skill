@@ -47,14 +47,17 @@ custom:
                 invocationName: ドラえもん
                 intents:
                 - name: DorapiIntent
+                  slots:
+                    - name: GadgetKeyword
+                      type: AMAZON.SearchQuery
                   samples:
-                      - "ひみつ道具を調べて"
-                      - "ひみつ道具"
-                      - "ドラえもん"
-                      - "ドラ"
-                      - "ドラちゃん"
-                      - "ドラカス"
-                      - "ドラカス畜生"
+                      - "{GadgetKeyword}に関するひみつ道具を調べて"
+                      - "{GadgetKeyword}に関するひみつ道具"
+                      - "ドラえもん {GadgetKeyword}"
+                      - "ドラ {GadgetKeyword}"
+                      - "ドラちゃん {GadgetKeyword}"
+                      - "ドラカス {GadgetKeyword}"
+                      - "ドラカス畜生 {GadgetKeyword}"
                 - name: AMAZON.HelpIntent
                   samples:
                 - name: AMAZON.CancelIntent

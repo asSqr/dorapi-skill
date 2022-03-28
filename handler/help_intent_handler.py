@@ -4,6 +4,11 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 
 class HelpIntentHandler(AbstractRequestHandler):
     
@@ -11,6 +16,8 @@ class HelpIntentHandler(AbstractRequestHandler):
         return is_intent_name("AMAZON.HelpIntent")(handler_input)
     
     def handle(self, handler_input: HandlerInput) -> Response:
+        logger.info('In HelpIntentHandler')
+        
         speech_text = "こんにちは。と言ってみてください。"
         
         (
