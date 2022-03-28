@@ -15,8 +15,7 @@ class AllExceptionHandler(AbstractExceptionHandler):
     
     def handle(self, handler_input: HandlerInput, exception: Exception) -> Response:
         logger.info('In AllExceptionHandler')
-        
-        print(exception)
+        logger.info(exception)
         
         speech = "すみません、わかりませんでした。もう一度言ってください。"
         

@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from itertools import reduce
+from functools import reduce
 
 
 def generate_query(query_dict: Dict[str, Any]) -> str:
@@ -11,6 +11,6 @@ def generate_query(query_dict: Dict[str, Any]) -> str:
         
         return acc
     
-    query_str = reduce(query_dict.keys(), reducer)
+    query_str = reduce(reducer, query_dict.keys(), '')
     
     return query_str

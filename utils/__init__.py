@@ -1,1 +1,1 @@
-from utils import generate_query       # noqa
+from utils.utils import generate_query       # noqa

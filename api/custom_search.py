@@ -26,7 +26,7 @@ def get_image_url_from_google(gadget_name: str) -> str:
     
     url = f'{GOOGLE_BASE_URL}{GOOGLE_CUSTOM_SEARCH_PATH}?{query}'
     
-    resp = requests.get(url)
+    resp = requests.get(url).json()
     images = resp['items']
     
     return images[0]['link']

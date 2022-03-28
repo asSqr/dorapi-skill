@@ -18,7 +18,7 @@ class HelpIntentHandler(AbstractRequestHandler):
     def handle(self, handler_input: HandlerInput) -> Response:
         logger.info('In HelpIntentHandler')
         
-        speech_text = "こんにちは。と言ってみてください。"
+        speech_text = "ひみつ道具に関するキーワードを言ってみてください。"
         
         (
             handler_input.response_builder

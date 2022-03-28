@@ -18,7 +18,7 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input: HandlerInput) -> Response:
         logger.info('In LaunchRequestHandler')
         
-        speech_text = "ようこそ、アレクサスキルキットへ。こんにちは、と言ってみてください。"
+        speech_text = "ようこそ、ドラピアイへ。ひみつ道具に関するキーワードを言ってみてください。"
         
         (
             handler_input.response_builder

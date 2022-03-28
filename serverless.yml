@@ -51,8 +51,7 @@ custom:
                     - name: GadgetKeyword
                       type: AMAZON.SearchQuery
                   samples:
-                      - "{GadgetKeyword}に関するひみつ道具を調べて"
-                      - "{GadgetKeyword}に関するひみつ道具"
+                      - "{GadgetKeyword} 道具"
                       - "ドラえもん {GadgetKeyword}"
                       - "ドラ {GadgetKeyword}"
                       - "ドラちゃん {GadgetKeyword}"

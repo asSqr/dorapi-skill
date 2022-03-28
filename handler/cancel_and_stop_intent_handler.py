@@ -22,11 +22,12 @@ class CancelAndStopIntentHandler(AbstractRequestHandler):
         logger.info('CancelAndStopIntentHandler')
         
         speech_text = "さようなら"
+        cancel_title = "キャンセル"
         
         (
             handler_input.response_builder
             .speak(speech_text)
-            .set_card(SimpleCard("ハローワールド", speech_text))
+            .set_card(SimpleCard(cancel_title, speech_text))
             .set_should_end_session(True)
         )
         

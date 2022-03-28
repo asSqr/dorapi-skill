@@ -5,12 +5,18 @@ from constants.dorapi import (
 from utils import generate_query
 
 import requests
+from urllib.parse import quote
 from typing import List
+
+import logging
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_gadget_names_by_keyword(keyword: str) -> List[str]:
     query_dict = {
-        'keyword': keyword,
+        'keyword': quote(keyword),
         'page': DORA_GADGET_PAGE,
         'page_size': DORA_GADGET_PAGE_SIZE,
     }
@@ -19,7 +25,9 @@ def get_gadget_names_by_keyword(keyword: str) -> List[str]:
     
     url = f'{DORA_BASE_URL}{DORA_GADGETS_PATH}?{query}'
     
-    resp = requests.get(url)
+    logger.info('[get_gadget_names_by_keyword] {}', url)
+    
+    resp = requests.get(url).json()
     gadgets = resp['datas']
     
     gadget_name_list = []
