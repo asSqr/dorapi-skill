@@ -7,7 +7,7 @@ from ask_sdk_model.ui import StandardCard, Image
 from constants.alexa_skill import (
     DORAPI_GADGET_SLOT,
     DORAPI_SPEECH_TEXT,
-    DORAPI_CARD_TITLE,   
+    DORAPI_CARD_TITLE,  
 )
 from api.dorapi import get_gadget_names_by_keyword
 from api.custom_search import get_image_url_from_google
