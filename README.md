@@ -19,7 +19,24 @@ Alexa: 「ようこそ、ドラピアイへ。ひみつ道具に関するキー�
 Alexa: 「<キーワード> を検索した結果、<ひみつ道具名> が見つかりました。」
 ```
 
-`.env` ファイルを直下に配置してください．
+`.env` ファイルを直下に配置してください:
+```
+# 取得方法は https://github.com/paramraghavan/serverless-py-alexa-skill 等参照
+AMAZON_VENDOR_ID=...
+AMAZON_CLIENT_ID=...
+AMAZON_CLIENT_SECRET=...
+ALEXA_SKILL_ID=...
+AWS_ACCOUNT=...
+
+# Google Custom Search (取得方法は調べてください)
+CSE_ID=...  # Custom Search Engine ID
+GOOGLE_API_KEY=...  # Google API Key
+```
+
+# virtualenv
+```
+. ./skill_env/bin/activate
+```
 
 # デプロイ手順
 - https://github.com/paramraghavan/serverless-py-alexa-skill
@@ -27,6 +44,8 @@ Alexa: 「<キーワード> を検索した結果、<ひみつ道具名> が見�
 - https://www.serverless.com/blog/how-to-manage-your-alexa-skills-with-serverless
 
 に従う．
+
+以下の `--aws-profile` は `~/.aws/credentials` に登録されている profile に対応するものを指定する．
 
 ## Alexa skill 作成
 ```
