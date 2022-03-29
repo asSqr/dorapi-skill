@@ -21,6 +21,8 @@ logger.setLevel(logging.INFO)
 class DorapiIntentHandler(AbstractRequestHandler):
     
     def can_handle(self, handler_input: HandlerInput) -> bool:
+        logger.info('is_intent_name: {}', is_intent_name("DorapiIntent")(handler_input))
+        
         return is_intent_name("DorapiIntent")(handler_input)
     
     def handle(self, handler_input: HandlerInput) -> Response:
@@ -28,13 +30,19 @@ class DorapiIntentHandler(AbstractRequestHandler):
         
         gadget_keyword = get_slot_value(handler_input, DORAPI_GADGET_SLOT)
         
+        logger.info('gadget_keyword {}', gadget_keyword)
+        
         gadget_name = get_gadget_names_by_keyword(gadget_keyword)[0]
+        
+        logger.info('gadget_name {}', gadget_name)
         
         image_url = get_image_url_from_google(gadget_name)
         image = Image(
             small_image_url=image_url,
             large_image_url=image_url
         )
+        
+        logger.info('image_url: {}', image_url)
         
         speech_text = DORAPI_SPEECH_TEXT.format(gadget_keyword, gadget_name)
         card_title = DORAPI_CARD_TITLE.format(gadget_keyword)

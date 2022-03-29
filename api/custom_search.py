@@ -5,6 +5,7 @@ from utils import generate_query
 
 import os
 import requests
+from urllib.parse import quote
 
 
 def get_image_url_from_google(gadget_name: str) -> str:
@@ -12,8 +13,11 @@ def get_image_url_from_google(gadget_name: str) -> str:
     CSE_ID = os.getenv('CSE_ID')
     GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
     
+    search_keyword = f'{gadget_name} コミック'
+    encoded_keyword = quote(search_keyword.replace(' ', '+'))
+    
     query_dict = {
-        'q': gadget_name.replace(' ', '+'),
+        'q': encoded_keyword,
         'searchType': 'image',
         'cx': CSE_ID,
         'key': GOOGLE_API_KEY,

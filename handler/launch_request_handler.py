@@ -18,12 +18,13 @@ class LaunchRequestHandler(AbstractRequestHandler):
     def handle(self, handler_input: HandlerInput) -> Response:
         logger.info('In LaunchRequestHandler')
         
+        card_title = "ドラピアイ"
         speech_text = "ようこそ、ドラピアイへ。ひみつ道具に関するキーワードを言ってみてください。"
         
         (
             handler_input.response_builder
             .speak(speech_text)
-            .set_card(SimpleCard("ハローワールド", speech_text))
+            .set_card(SimpleCard(card_title, speech_text))
             .set_should_end_session(False)
         )
         

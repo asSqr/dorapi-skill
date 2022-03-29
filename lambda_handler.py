@@ -11,6 +11,10 @@ from handler import (
     SessionEndedRequestHandler,
 )
 
+from interceptor import (
+    LogRequestInterceptor
+)
+
 
 skill_builder = SkillBuilder()
 
@@ -21,5 +25,8 @@ skill_builder.add_request_handler(CancelAndStopIntentHandler())
 skill_builder.add_request_handler(SessionEndedRequestHandler())
 
 skill_builder.add_exception_handler(AllExceptionHandler())
+
+skill_builder.add_global_request_interceptor(LogRequestInterceptor())
+
 
 handler = skill_builder.lambda_handler()
